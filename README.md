@@ -4,6 +4,6 @@
 #Adaptive.
 
 #API :
-#http://NODEMCU_IP/?pin=ON2 on pin 2
-#http://NODEMCU_IP/?pin=OFF2 off pin 2
+#http://NODEMCU_IP/?pin=ON2  pin 2 HIGH
+#http://NODEMCU_IP/?pin=OFF2 pin 2 LOW
 
