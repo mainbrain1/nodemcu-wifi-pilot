@@ -1,5 +1,5 @@
 # nodemcu-wifi-pilot web console for Nodemcu
-#Uses external libraries.
+#Uses external libraries.(change path in index.html)
 #Bootstrap/jquery.
 #Adaptive.
 
