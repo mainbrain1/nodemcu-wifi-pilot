@@ -1,5 +1,5 @@
 wifi.setmode(wifi.STATION)
-    wifi.sta.config("SSID","PASS")
+    wifi.sta.config("siska","siska144siska144")
     print(wifi.sta.getip())
 led1 = 3
 led2 = 4
@@ -9,7 +9,7 @@ responseHeader = function(code, type)
   return "HTTP/1.1 " .. code .. "\r\nConnection: close\r\nServer: Lua\r\nContent-Type: " .. type .. "\r\n\r\n";
 end
 srv=net.createServer(net.TCP)
-srv:listen(80,function(conn)
+srv:listen(999,function(conn)
     conn:on("receive", function(client,request)
        -- local buf = "";
         local _, _, method, path, vars = string.find(request, "([A-Z]+) (.+)?(.+) HTTP");
@@ -23,10 +23,10 @@ srv:listen(80,function(conn)
             end
         end
 local name=string.sub(path, 2) 
-print("Start sending: ", name)
-if (name=="")then
+if (name=="" or file.list()[name] == nil)then
 name="index.html"
  end
+print("Start sending: ", name)
 local continue = true
    local size = file.list()[name]
    local bytesSent = 0
@@ -45,6 +45,7 @@ local continue = true
       if bytesSent == size then continue = false end
    end
    print("Finished sending: ", name)
+    
      --   buf = buf.."<h1> ESP8266 Web Server</h1>";
      --   buf = buf.."<p>GPIO0 <a href=\"?pin=ON1\"><button>ON</button></a>&nbsp;<a href=\"?pin=OFF1\"><button>OFF</button></a></p>";
      --   buf = buf.."<p>GPIO2 <a href=\"?pin=ON2\"><button>ON</button></a>&nbsp;<a href=\"?pin=OFF2\"><button>OFF</button></a></p>";
@@ -59,6 +60,7 @@ local continue = true
               gpio.write(led2, gpio.HIGH);
         end
    --     client:send(buf);
+  print("GET ",  _GET.pin);
         client:close();
         collectgarbage();
     end)
