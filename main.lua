@@ -1,5 +1,5 @@
 wifi.setmode(wifi.STATION)
-    wifi.sta.config("siska","siska144siska144")
+    wifi.sta.config("SSID","PASS")
     print(wifi.sta.getip())
 led1 = 3
 led2 = 4
